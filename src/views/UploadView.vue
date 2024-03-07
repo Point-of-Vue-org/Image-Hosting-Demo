@@ -34,7 +34,7 @@ const uploadImage = async () => {
 }
 
 function saveImage(imageUrl) {
-  fetch('http://localhost:5000/images', {
+  fetch(`${import.meta.env.VITE_API_URL}/images`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
