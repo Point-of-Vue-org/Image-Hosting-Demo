@@ -5,7 +5,7 @@ const images = ref([])
 
 async function fetchImages() {
   let result
-  await fetch('http://localhost:5000/images')
+  await fetch(`${import.meta.env.VITE_API_URL}/images`)
     .then(response => response.json())
     .then(data => {
       console.log('Success:', data)
@@ -25,7 +25,7 @@ const deleteImage = async (id) => {
 
   if (!window.confirm('Are you sure you want to delete this image?')) return
 
-  await fetch(`http://localhost:5000/images/${id}`, {
+  await fetch(`${import.meta.env.VITE_API_URL}/images/${id}`, {
     method: 'DELETE'
   })
   images.value = await fetchImages()
